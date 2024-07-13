@@ -1,15 +1,22 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
   const [num, setNum] = useState(0);
-  const [isShowFace, setIsShowFace] = useState(true);
+  const [isShowFace, setIsShowFace] = useState(false);
   const onClickButton = () => {
     setNum(num + 1);
   }
   const Toggle = () => {
     setIsShowFace(!isShowFace);
   }
+  useEffect(() => {
+    if(num % 3 === 0){
+      isShowFace || setIsShowFace(true);
+    } else {
+      isShowFace && setIsShowFace(false);
+    }
+  }, [num]);
 
   return (
     <>
